@@ -1,0 +1,12 @@
+<?php
+namespace DummyNamespace;
+use App\Services\BaseService;
+use App\Traits\HttpCode;
+
+class DummyClass extends BaseService{
+
+    public function index(){
+
+    }
+
+}
