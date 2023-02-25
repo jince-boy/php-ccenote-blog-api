@@ -98,7 +98,16 @@ abstract class BaseRepository
     {
         return $this->model::find($id);
     }
-
+    /**
+     * 通过主键删除数据
+     * 2022-7-14
+     * @param $ids
+     * @return mixed
+     */
+    public function whereDelete($ids): mixed
+    {
+        return $this->model->destroy($ids);
+    }
     /**
      * 通过主键删除数据
      * 2022-7-14
