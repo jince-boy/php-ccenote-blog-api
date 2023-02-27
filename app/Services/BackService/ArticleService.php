@@ -65,7 +65,7 @@ class ArticleService extends BaseService
                 return strtoupper($v);
             }, $data['tags']);
 
-            $difference=array_diff($data['tags'],$tagsName);
+            $difference=array_diff(array_unique($data['tags']),$tagsName);
 
             foreach($difference as $value){
                 if($value!=null){
