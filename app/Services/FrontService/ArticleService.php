@@ -2,6 +2,7 @@
 namespace App\Services\FrontService;
 use App\Repositories\ArticleRepository;
 use App\Services\BaseService;
+use App\Traits\HttpCode;
 use Illuminate\Http\JsonResponse;
 
 class ArticleService extends BaseService{
@@ -45,6 +46,9 @@ class ArticleService extends BaseService{
      */
     public function getArticle($request,ArticleRepository $repository): JsonResponse
     {
+        if(!$repository->exists('id',$request->id)){
+            return $this->Json("文章id不存在",null,HttpCode::HTTP_CREATED,false,"文章id不存在");
+        }
         return $this->Json('ok',$repository->getFrontArticle($request->id));
     }
 }
