@@ -104,9 +104,8 @@ abstract class BaseRepository
      * @param $ids
      * @return mixed
      */
-    public function whereDelete($ids): mixed
-    {
-        return $this->model->destroy($ids);
+    public function whereDelete($attribute,$value){
+        return $this->model->where($attribute,$value)->delete();
     }
     /**
      * 通过主键删除数据

@@ -71,7 +71,7 @@ class CommentService extends BaseService
     public function deleteComment($request,CommentRepository $repository): JsonResponse
     {
         if($repository->exists("id",$request->id)){
-            $repository->delete($repository->getCommentIds($repository->findById($request->id)));
+            $repository->whereDelete('id',$repository->getCommentIds($repository->findById($request->id)));
             return $this->Json("评论删除成功");
         }
         return $this->Json("评论删除错误错误", null, HttpCode::HTTP_TYPE_ERROR, false, "该评论不存在");

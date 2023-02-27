@@ -278,7 +278,7 @@ class AdminService extends BaseService
                 }
                 Storage::disk('images')->delete('avatar/back/'.$user->username.'.jpg');
                 $commentRepository->AdminDetachComment($value);
-                $repository->delete('id',$value);
+                $repository->whereDelete('id',$value);
             }
         }
         return $this->Json("用户删除成功");
