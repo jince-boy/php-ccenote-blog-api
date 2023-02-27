@@ -124,8 +124,7 @@ class ArticleService extends BaseService
             $data['tags'] = array_map(function ($v) {
                 return strtoupper($v);
             }, $data['tags']);
-
-            $difference=array_diff($data['tags'],$tagsName);
+            $difference=array_diff(array_unique($data['tags']),$tagsName);
 
             foreach($difference as $value){
                 if($value!=null){
@@ -133,7 +132,7 @@ class ArticleService extends BaseService
                 }
             }
 
-            $dataDifference=array_diff($data['tags'],$difference);
+            $dataDifference=array_diff(array_unique($data['tags']),$difference);
             foreach($dataDifference as $v){
                 foreach($tagsAll as $value){
                     if($v==$value['name']){
